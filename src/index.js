@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
+
 import rootReducer from "./redux/store/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

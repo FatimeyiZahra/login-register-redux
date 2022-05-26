@@ -66,7 +66,6 @@ export default function SignIn() {
       showPassword: !values.showPassword,
     });
   };
-  useEffect(() => {}, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();

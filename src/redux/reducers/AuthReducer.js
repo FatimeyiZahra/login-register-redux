@@ -19,23 +19,25 @@ const getAuthState = () => {
   }
 };
 
+
 const newAuth = getAuthState();
 
 const AuthReducer = (state = newAuth, action) => {
-  switch (action.type) {
+  const { payload, type } = action;
+  switch (type) {
     case actionType.Login_Succes:
       const NewAuthState = {
         isLogedIn: true,
-        token: action.payload,
+        token: payload,
       };
-      axios.defaults.headers.common["Authorization"]= `Bearer ${action.payload}`;
+      axios.defaults.headers.common["Authorization"] = `Bearer ${payload}`;
       localStorage.setItem("auth", JSON.stringify(NewAuthState));
       return NewAuthState;
-      case actionType.Login_Fail:
-          localStorage.removeItem("auth");
-          return authState;
+    case actionType.Login_Fail:
+      localStorage.removeItem("auth");
+      return authState;
     default:
-      return state
-}
+      return state;
+  }
 };
 export default AuthReducer;
